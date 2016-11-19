@@ -8,14 +8,16 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="icon" href="ico/bunny.ico" type="image/x-icon">
+    <script src="public_js/jquery-2.2.3.min.js"></script>
   </head>
   <body>
     <section class="page-header">
         <h1 class="project-name">Little fun</h1>
         <h2 class="project-tagline"></h2>
         <a href="https://github.com/TheLostIn/TheLostIn.github.io" class="btn">View on GitHub</a>
-        <a href="https://github.com/TheLostIn/TheLostIn.github.io/zipball/master" class="btn">Download .zip</a>
-        <a href="https://github.com/TheLostIn/TheLostIn.github.io/tarball/master" class="btn">Download .tar.gz</a>
+      <!--   <a href="https://github.com/TheLostIn/TheLostIn.github.io/zipball/master" class="btn">Download .zip</a>
+        <a href="https://github.com/TheLostIn/TheLostIn.github.io/tarball/master" class="btn">Download .tar.gz</a> -->
 
     </section>
 
@@ -23,14 +25,15 @@
    <!--    <h3>
 <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
 <h3> -->
-<a id="welcome-to-github-pages" class="anchor" href="新闻联播/index.html" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span>402新闻联播</a></h3>
+<a class="link_to" class="anchor" href="#" onclick="get_psw()" aria-hidden="true"><span aria-hidden="true"  class="octicon octicon-link"></span>402新闻联播</a></h3>
 <p>滴 甲鱼给您报时啦 ！！！！啦啦啦啦啦啦~~~~~</p>
-<a id="welcome-to-github-pages" class="anchor" href="surprise/sur.html" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span>402闪现</a></h3>
+<a class="link_to" class="anchor" href="#" onclick="get_psw()" aria-hidden="true"><span aria-hidden="true"  class="octicon octicon-link"></span>402闪现</a></h3>
 <p>滴 402 闪现</p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/TheLostIn/little_trick">Little trick</a> is maintained by <a href="https://github.com/TheLostIn">TheLostIn</a>.</span>
-        <span class="site-footer-credits"> <a href="http://logicjake.xyz">友情链接</a></span>
+        <span class="site-footer-credits"> <a href="http://logicjake.xyz">友情链接-></a></span>
+        <span class="site-footer-credits"> <a href="http://my.nuaa.edu.cn/blog">纸飞机技术博客</a></span>
       </footer> 
 <!-- <h3>
 =======
@@ -69,4 +72,23 @@
 
   
   </body>
+  <script>
+    function get_psw()
+    {
+      var psw;
+      var get_link;
+      psw=prompt("哈哈 有密码吗");
+      if(window.btoa(psw)=="cGFzc3dvcmQ=")
+      {
+            var link=$('.link_to');
+            link[0].href="新闻联播/index.html";
+            link[1].href="surprise/sur.html";
+            //console.log(link);
+      }else{
+        setTimeout(alert("不要调皮"), 1000);
+      }
+
+    }
+ //   to_news();
+  </script>
 </html>
