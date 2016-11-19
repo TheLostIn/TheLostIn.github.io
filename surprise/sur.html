@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-2.2.3.min.js"></script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>surprise</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+	body{
+	
+
+	}
+	img{
+		width: 80%;
+		height: 80%;
+	}
+	#whole{
+		float: left;
+		position: fixed;
+		z-index: 2000;
+	}
+	#control{
+		font-family: "微软雅黑";
+		position: relative;
+		z-index: 2000;
+		position: fixed;
+	    z-index: 2000;
+	    background-color: rgba(0, 246, 255, 0.82);
+	    border-radius: 20px;
+	    border-style: none;
+	    padding: 14px;	
+	}
+</style>
+</head>
+<body>
+	<div id="whole">
+
+	</div>
+	<input type="button" id="control" value="stop" onclick="stop()"/> 
+
+</body>
+<script type="text/javascript">
+	var flag=1;
+	var num=1;
+	var fast_img = $('#fast_img_1');
+	var all=78;
+	console.log(fast_img);
+	function whole_init()
+	{
+		var text = '';
+		for(var i=1;i<all+1;i++)
+		{
+			text += '<img id="fast_img_'+i+'" src="img/'+i+'.jpg"/>';
+		}
+		$('#whole').append(text);
+		$('#fast_img_1').show();
+		num=1;
+	}
+	function ran_1()
+	{
+		var random_num = Math.random()*all;
+		random_num = Math.ceil(random_num);
+		return random_num;
+	}
+
+	function stop()
+	{
+		if(flag){
+			flag=0;
+				$('#control').attr('value','闲着没事请戳我一下');
+		}
+		else{
+			flag=1;
+			$('#control').attr('value','闲着没事请再戳我一下');
+			ani1();
+		}
+
+	}
+
+	function fast_move()
+	{
+		var temp = ran_1();
+		console.log(temp);
+		var next_img = '#fast_img_'+temp;
+		var last_img = '#fast_img_'+num;
+		num = temp;
+		$(last_img).hide(300);
+		$(next_img).show(800);
+	}
+//	funB(); 
+	
+    function ani1()
+    {
+   
+    		$("#whole").animate({ opacity:'0',left:'+=600px'},Math.random()*500+500,function(){if(Math.random()*100>30){fast_move();}ani2();});  
+	    }
+	    function ani2()
+	    {
+	   			$("#whole").animate({ opacity:'1',left:'-=600px'},Math.random()*500+500,function(){if(Math.random()*100>30){fast_move();}if(flag){ani1();}});
+    }
+	function all_hid()
+	{
+		$('#whole img').hide(0);
+	}
+		whole_init();
+		all_hid();
+		ani1();
+</script>
+</html>

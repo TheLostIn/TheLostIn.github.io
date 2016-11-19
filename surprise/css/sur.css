@@ -1,0 +1,26 @@
+<style type="text/css">
+	body{
+	
+
+	}
+	img{
+		width: 80%;
+		height: 80%;
+	}
+	#whole{
+		float: left;
+		position: fixed;
+		z-index: 2000;
+	}
+	#control{
+		font-family: "微软雅黑";
+		position: relative;
+		z-index: 2000;
+		position: fixed;
+	    z-index: 2000;
+	    background-color: rgba(0, 246, 255, 0.82);
+	    border-radius: 20px;
+	    border-style: none;
+	    padding: 14px;	
+	}
+</style>
