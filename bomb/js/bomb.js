@@ -8,6 +8,14 @@ var bomb_cur=0;
 var correct_bomb=0;
 var visit=new Array();
 console.log(a);
+
+var app = new Vue({
+				  el: '#record',
+				  data: {
+				    bomb_num: bomb_num,
+				    bomb_cur: bomb_cur
+				  }
+			});
 function init_visit(visit)
 {
 	for(var i=0;i<=width+1;i++)
@@ -107,6 +115,7 @@ function init_map(a,width,height)
 			}
 		}
 	}
+	app.bomb_num=bomb_num;
 }
 function get_matrix()
 {
@@ -243,6 +252,6 @@ function check_bomb(id)
 
 		flag=1;
 	}
-	
+	app.bomb_cur=bomb_cur;
 
 }

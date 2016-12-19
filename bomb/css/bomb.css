@@ -34,11 +34,22 @@ input[type=text]
     text-align: center;
 }
 body
-{
-	background-image: url(../../public/bg_img/bunny.jpg);
-	background-size: cover;
+{/*
+	background-image: url(../../public/bg_img/bunny.jpg);*/
+/*	background-size: cover;
 	background-repeat: no-repeat;
 	font-family: 微软雅黑;
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	top:0;
+	left: 0;
+	height: 100%;
+	position: fixed;
+*/
+filter : progid:DXImageTransform.Microsoft.AlphaImageLoader ( sizingMethod='scale' , src='../../public/bg_img/bunny.jpg') 
+
+
 }
 .begin
 {
@@ -51,4 +62,23 @@ h3
 {
 	margin: 12px;
 	font-family: 微软雅黑;
+	text-align: left;
+}
+.body-bg-img
+{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-image: url(../../public/bg_img/bunny.jpg);
+	background-size: cover;
+}
+.container
+{
+	font-family: 微软雅黑;
+}
+#record
+{
+	text-align: left;
 }
