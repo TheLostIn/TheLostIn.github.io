@@ -261,6 +261,7 @@ function check_bomb(id)
 }
 function re_start()
 {
+	flag=0;
 	$('#bg').empty();
 	$('#record').hide();
 	$('#re_start').hide();
