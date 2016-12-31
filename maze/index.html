@@ -25,19 +25,19 @@
 
 	<div class="bs-example bs-example-form" style="padding: 20px;">
 		<div class="col-lg-12">
-      		<h3>扫扫扫扫  雷</h3>
+      		<h3>迷宫</h3>
       	</div>
       	<div class="col-lg-12">
       		<h3>
-      			啊哈 扫雷
+      			啊哈 迷宫
       		</h3>
       	</div>    
      <div id="ask_height_width">
-		<div class="col-lg-8 col-md-8 col-xs-8"><input type="text" class="col-lg-8 col-md-8 col-xs-8" name="width" id="width" placeholder="width"></div>
-		<div class="col-lg-8 col-md-8 col-xs-8"><input type="text" class="col-lg-8 col-md-8 col-xs-8" name="height" id="height" placeholder="height"></div>
-		<div class="col-lg-8 col-md-8 col-xs-8"><input type="text" class="col-lg-8 col-md-8 col-xs-8" name="hard" id="hard" placeholder="hard 1 2 3 4 5 6 越小越难"></div>
+		<div class="col-lg-8 col-md-8 col-xs-8"><input type="text" class="col-lg-8 col-md-8 col-xs-8" name="width" id="width" placeholder="width (奇数)"></div>
+		<div class="col-lg-8 col-md-8 col-xs-8"><input type="text" class="col-lg-8 col-md-8 col-xs-8" name="height" id="height" placeholder="height (奇数)"></div>
+		<!-- <div class="col-lg-8 col-md-8 col-xs-8"><input type="text" class="col-lg-8 col-md-8 col-xs-8" name="hard" id="hard" placeholder="hard 1 2 3 4 5 6 越小越难"></div> -->
      </div>
-		<div class="col-lg-8 col-md-8 col-xs-8"><input type="button" name="submit" value="let's begin" class="begin col-lg-8 col-md-8 col-xs-8" onclick="start()"></div>
+		<div class="col-lg-8 col-md-8 col-xs-8"><input type="button" name="submit" value="let's begin" class="begin col-lg-8 col-md-8 col-xs-8" onclick="make()"></div>
 		
 	</div> 
 	<div class="col-lg-12 col-md-12 col-xs-12" id="record">
@@ -58,12 +58,15 @@
 	 <div id="re_start" style="padding: 30px" class="col-lg-8 col-xs-8 col-md-8">
 	 <input type="button" name="submit" id="re_start" value="re_start" class="begin col-lg-8 col-md-8 col-xs-8" onclick="re_start()">
 	 </div>
+	 <div style="padding: 30px" class="col-lg-8 col-xs-8 col-md-8">
+	 	<input type="button" name="submit" id="help" value="help me" class="begin col-lg-8 col-md-8 col-xs-8" onclick="help()">
+	 </div>
 </div>
 </body>
 <script type="text/javascript">
 $('#record').hide();
 $('#re_start').hide();
-
+$('#help').hide();
 function start()
 {
 
@@ -132,15 +135,15 @@ document.oncontextmenu=function(e){return false;}
 //start();
 </script>
 <script type="text/javascript">
-	$(document).ready(function(){
-    // var prevpage="http://www.google.com.hk";//向左
-    // var nextpage="http://www.baidu.com";//向右
-    // var bookpage="http://localhost/test/index.asp";  //回车
-    $("body").keydown(function(event){
-     console.log(parseInt(event.keyCode));
+	// $(document).ready(function(){
+ //    // var prevpage="http://www.google.com.hk";//向左
+ //    // var nextpage="http://www.baidu.com";//向右
+ //    // var bookpage="http://localhost/test/index.asp";  //回车
+ //    $("body").keydown(function(event){
+ //     console.log(parseInt(event.keyCode));
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
-    });
- });
+ //    });
+ // });
 	//c                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  $('body').keydown(moveto(event));
 </script>
 

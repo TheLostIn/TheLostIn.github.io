@@ -158,6 +158,7 @@
 	{
 		var x=find_father(point_1);
 		var y=find_father(point_2);
+		console.log(x,y);
 		if(x!=y)
 		{
 			if(rank[x]<=rank[y])
@@ -171,6 +172,7 @@
 				rank[x]=rank[x]+rank[y];
 			}
 		}
+		console.log("union ："+x+" "+y,father[y],father[x]);
 	}
 	function point_to_count(i,j)
 	{
@@ -208,6 +210,7 @@
 
 		while(find_father(point_to_count(point.in.x,point.in.y))!=find_father(point_to_count(point.out.x,point.out.y)))
 		{		
+			console.log("first: "+find_father(point_to_count(point.in.x,point.in.y)),"second: "+find_father(point_to_count(point.out.x,point.out.y)));
 			var cur_x = Math.floor(Math.random()*(height-2))+1;
 			cur_x = cur_x%2==0?cur_x:(cur_x+1);
 			var cur_y = Math.floor(Math.random()*(width-2))+1;
@@ -217,12 +220,16 @@
 			{
 				return 0;
 			}
+			console.log("cur_x: "+cur_x,"cur_y: "+cur_y);
 		//	var  j=prompt("pp");
 			var x=[-2,0,2,0];
 			var y=[0,2,0,-2];
 			var x_1=[-1,0,1,0];
 			var y_1=[0,1,0,-1];
 			var tmp=Math.floor(Math.random()*4);
+			var new_x,new_y;
+
+			console.log("cur_x: "+cur_x,"cur_y: "+cur_y,"tmp: "+tmp);
 			new_x=cur_x+x[tmp];
 			new_y=cur_y+y[tmp];
 			console.log(cc);
@@ -230,10 +237,10 @@
 			{
 				if(a[new_x][new_y]==0&&a[cur_x][cur_y]==0)
 				{
-					console.log("find_fa: new:  "+find_father(point_to_count(new_x,new_y))+"find_fa cur :  "+find_father(point_to_count(new_x,new_y)));
+					console.log("1 find_fa: cur:  "+find_father(point_to_count(cur_x,cur_y))+"find_fa cur :  "+find_father(point_to_count(new_x,new_y)));
 					if(find_father(point_to_count(cur_x,cur_y))!=find_father(point_to_count(new_x,new_y)))
 					{
-						console.log("find_fa: new:  "+find_father(point_to_count(new_x,new_y))+"find_fa cur :  "+find_father(point_to_count(new_x,new_y)));
+						console.log("2 find_fa: cur:  "+find_father(point_to_count(cur_x,cur_y))+"find_fa cur :  "+find_father(point_to_count(new_x,new_y)));
 					
 						Union_root(point_to_count(new_x,new_y),point_to_count(cur_x,cur_y));
 						a[cur_x+x_1[tmp]][cur_y+y_1[tmp]]=0;
@@ -243,7 +250,7 @@
 				}
 			}
 		}
-		console.log("final: ",cur_x,cur_y,new_x,new_y,cur_x+x_1[tmp],cur_y+y_1[tmp]);
+		//console.log("final: ",cur_x,cur_y,new_x,new_y,cur_x+x_1[tmp],cur_y+y_1[tmp]);
 		console.log(a);
 		return 1;
 
@@ -329,16 +336,24 @@ function DFS_search(cur)
 	console.log(a);
 	//console.log(st);
 }
-function make_maze()
+function make_maze(w,h)
 {	
 	var c=0;
 	c++;
 	var flag=0;
 	var point;	
 	var d;
+
+//	var w=$('#weight').val();
+//	var h=$('#width').val();
+	if(w==''||h=='')
+	{
+		alert('Please fill the blank.');
+		return ;
+	}
 	while(!flag)
 	{
-		d=Create_init_maze(21,21,5);
+		d=Create_init_maze(w,h,5);
 		father=init_father(father);
 		rank=init_rank(rank);
 		point=pick_in_out();
@@ -371,8 +386,52 @@ function make_maze()
 
 	$(`input[id=${point_to_count(point.out.x,point.out.y)}]`).removeClass("default");
 	$(`input[id=${point_to_count(point.out.x,point.out.y)}]`).addClass("out");
+
+	$('#re_start').show();
+	$('#help').show();
+	$('#ask_height_width').hide();
 }
-make_maze();
-visit=init_visit(visit,0);
-console.log(visit);
-DFS_search(cur);
+function make()
+{
+	if($('#height').val()==''||$('#width').val()=='')
+	{
+		console.log('pp');
+		alert('please complete the height and width.');
+	}
+	else
+	{
+		var h=$('#height').val();
+		var w=$('#width').val();
+		console.log(h,w);
+		w=parseInt(w);
+		h=parseInt(h);      
+		if(w%2==0||h%2==0)
+		{
+			alert("请输入奇数!");
+		}
+		else
+		{
+			console.log(w+1,h+2);
+			make_maze(w,h);
+			// visit=init_visit(visit,0);
+			// console.log(visit);
+			// DFS_search(cur);
+		}
+		
+	}
+}
+function help()
+{
+	visit=init_visit(visit,0);
+			console.log(visit);
+			DFS_search(cur);
+}
+function re_start()
+{
+	flag=0;
+	$('#bg').empty();
+	$('#help').hide();
+	$('#re_start').hide();
+	$('#ask_height_width').show();
+	console.log('p');
+}

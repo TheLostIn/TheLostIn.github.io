@@ -9,18 +9,14 @@
 .default
 {
     background-color: rgba(40, 165, 54, 0);
-    transition-delay: 2s;
--moz-transition-delay: 2s; /* Firefox 4 */
--webkit-transition-delay: 2s; /* Safari 和 Chrome */
--o-transition-delay: 2s; 
+    -webkit-transition: background-color 6s, -webkit-transform 6s; /* For Safari 3.1 to 6.0 */
+    transition: background-color 6s, transform 6s;
 }
 .walk
 {
 	 background-color: rgba(76, 175, 80, 0.82);
-	 transition-delay: 2s;
--moz-transition-delay: 2s; /* Firefox 4 */
--webkit-transition-delay: 2s; /* Safari 和 Chrome */
--o-transition-delay: 2s; 
+    -webkit-transition: background-color 6s, -webkit-transform 6s; /* For Safari 3.1 to 6.0 */
+    transition: background-color 6s, transform 6s;
 }
 #bg input[type='button']
 {
