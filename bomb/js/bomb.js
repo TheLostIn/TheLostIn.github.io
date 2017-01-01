@@ -45,7 +45,7 @@ function Create_bomb(width_w,height_w,hard_w)
 		a[i]=new Array();
 		for(var j=1;j<=width_w;j++)
 		{
-			a[i][j]=Math.floor(Math.random()*hard);
+			a[i][j]=Math.floor(Math.random()*(hard+1));
 			if(a[i][j]==0)
 			{
 				a[i][j]=-1;
