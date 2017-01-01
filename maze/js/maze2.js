@@ -467,6 +467,7 @@ function key_event()
 }
 function make()
 {
+	console.log('op');
 	if(on_going==0)
 	{
 		on_going=1;
@@ -531,7 +532,7 @@ function help()
 function re_start()
 {
 	flag=0;
-	ongoing=0;
+	on_going=0;
 	$('#bg').empty();
 	$('#help').hide();
 	$('#re_start').hide();
