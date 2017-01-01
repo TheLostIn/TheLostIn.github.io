@@ -1,3 +1,4 @@
+
 /// <reference path="jquery.min.js" />
 
 	var width=0;
@@ -14,6 +15,7 @@
 	var end_point;
 	var rank;
 	var count;
+	var record;
 	/*
 	var app = new Vue({
 					  el: '#record',
@@ -264,8 +266,8 @@ function back_place(num)
 }
 function show_place(num,index)
 {
-	$(`input[id=${num}]`).val(index);
-	console.log("index: "+index);
+//	$(`input[id=${num}]`).val(index);
+	//console.log("index: "+index);
 	//setTimeout($(`input[id=${num}]`).removeClass("default"), 3000);
 	//setTimeout($(`input[id=${num}]`).addClass("walk"), 3000);
 	$(`input[id=${num}]`).removeClass("default");
@@ -286,6 +288,7 @@ function DFS_search(cur)
 	var flag=1;
 	var index=0;
 	var st=new Array();
+	record=new Array();
 	console.log(cur);
 	st.push(cur);
 	console.log("st: "+st);
@@ -299,9 +302,11 @@ function DFS_search(cur)
 			{
 				//if((p.x!=end_point.x)||(p.y!=end_point.y))
 				//setTimeout(back_place(point_to_count(p.x,p.y)), 10000);
-				back_place(point_to_count(p.x,p.y));
+				//back_place(point_to_count(p.x,p.y));
+				record.push({point:point_to_count(p.x,p.y),todo:"pop"});
+				console.log(st);
 				p=st.pop();
-				
+				//record.push({point:point_to_count(p.x,p.y),todo:"pop"});
 				console.log("pop(): "+point_to_count(p.x,p.y));
 			}
 			
@@ -316,22 +321,24 @@ function DFS_search(cur)
 				console.log("new_x: "+new_x+" new_y: "+new_y+" i : "+i);
 				if(new_x>0&&new_x<height&&new_y>0&&new_y<width)
 				{
-					console.log("visit: "+visit[new_x][new_y]);
-					console.log("st.length: "+st.length);
+					//console.log("visit: "+visit[new_x][new_y]);
+				//	console.log("st.length: "+st.length);
 					if(a[new_x][new_y]==0&&(visit[new_x][new_y]==0))
 					{
 						flag=1;
-						st.push(p);
+						//st.push(p);
+						st.push({x:p.x,y:p.y});
 						//setTimeout(show_place(point_to_count(p.x,p.y),index++), 10000);
-						show_place(point_to_count(p.x,p.y),index++);
+						//show_place(point_to_count(p.x,p.y),index++);
+						//record.push({point:point_to_count(p.x,p.y),todo:"push",index:index++});
+						record.push({point:point_to_count(new_x,new_y),todo:"push",index:index++});
 						visit[new_x][new_y]=1;
 						p={x:new_x,y:new_y};
-						console.log(visit);
+					//	console.log(visit);
 						//break;
 					}
 				}
 			}
-
 	}
 	console.log(a);
 	//console.log(st);
@@ -391,6 +398,57 @@ function make_maze(w,h)
 	$('#help').show();
 	$('#ask_height_width').hide();
 }
+function key_event()
+{
+	var cur_x=cur.x;
+	var cur_y=cur.y;
+	var x=[-1,0,1,0];
+	var y=[0,1,0,-1];
+	visit=init_visit(visit,0);
+	visit[cur_x][cur_y]=1;
+	var key=[38,39,40,37];
+	 document.onkeydown=function(event){
+	 	var new_x,new_y;
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            if(e)
+            {
+             	for(var i=0;i<4;i++)
+             	{
+	         		if(e.keyCode==key[i])
+	         		{
+	                 //要做的事情
+		                 new_x=cur_x+x[i];
+		                 new_y=cur_y+y[i];
+		                 if(new_x>1&&new_x<height&&new_y>1&&new_y<width)
+		                 {
+		                 	if(a[new_x][new_y]==0)
+		                 	{
+			                 	if(visit[new_x][new_y]==0)
+			                 	{
+			                 		show_place(point_to_count(new_x,new_y),0);
+			                 		cur_x=new_x;
+			                 		cur_y=new_y;
+			                 		visit[new_x][new_y]=1;
+			                 	}
+			                 	else if(visit[new_x][new_y]==1)
+			                 	{
+			                 		back_place(point_to_count(cur_x,cur_y));
+			                 		visit[cur_x][cur_y]=0;
+			                 		cur_x=new_x;
+			                 		cur_y=new_y;
+			                 	}		            
+		                 	}
+		                 }
+		                 break;
+	                }
+             	}
+             	if(cur_x==end_point.x&&cur_y==end_point.y)
+             	{
+             		alert('Congradulations!!');
+             	}
+            }
+         }; 
+}
 function make()
 {
 	if($('#height').val()==''||$('#width').val()=='')
@@ -413,18 +471,42 @@ function make()
 		{
 			console.log(w+1,h+2);
 			make_maze(w,h);
-			// visit=init_visit(visit,0);
-			// console.log(visit);
-			// DFS_search(cur);
+			key_event();
 		}
 		
 	}
 }
+function show_path()
+{
+	var p;
+	var show = setInterval(function(){
+		p=record.shift();
+		console.log(p);
+		console.log('a',p.index);
+		if(p.todo=="push")
+		{
+			
+			setTimeout(show_place, 500, p.point, p.index);
+			console.log('b',p.index);
+		}	　 		
+		else
+		{
+			setTimeout(back_place, 500, p.point);
+		}
+		console.log('c');
+		if(record.length==0)
+		{
+			clearInterval(show);
+		}
+		}, 500);
+	
+}
 function help()
 {
 	visit=init_visit(visit,0);
-			console.log(visit);
-			DFS_search(cur);
+	console.log(visit);
+	DFS_search(cur);
+	show_path();
 }
 function re_start()
 {

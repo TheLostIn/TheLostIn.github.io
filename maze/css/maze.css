@@ -1,22 +1,14 @@
-.flag
-{
-	 background-color: rgba(38, 14, 236, 0.09);
-}
-.bomb_flag
-{
-	background-color: rgba(76, 175, 80, 0.82);
-}
 .default
 {
     background-color: rgba(40, 165, 54, 0);
-    -webkit-transition: background-color 6s, -webkit-transform 6s; /* For Safari 3.1 to 6.0 */
-    transition: background-color 6s, transform 6s;
+    -webkit-transition: background-color 0.5s, -webkit-transform 0.5s; /* For Safari 3.1 to 6.0 */
+    transition: background-color 0.5s, transform 0.5s;
 }
 .walk
 {
 	 background-color: rgba(76, 175, 80, 0.82);
-    -webkit-transition: background-color 6s, -webkit-transform 6s; /* For Safari 3.1 to 6.0 */
-    transition: background-color 6s, transform 6s;
+    -webkit-transition: background-color 0.5s, -webkit-transform 0.5s; /* For Safari 3.1 to 6.0 */
+    transition: background-color 0.5s, transform 0.5s;
 }
 #bg input[type='button']
 {
@@ -24,16 +16,15 @@
 	height: 20px;
 	padding: 0;
     margin: 2px;
+    font-size: 14x;
     /*border-style: none;*/
-        border-width: thin;
+    border-width: thin;
     border-radius: 18%;
-        border-right-color: white;
+    border-right-color: white;
     border-bottom-color: white;
 }
 input[type=text]
 {
-	/*width: 30px;
-	height: 20px;*/
 	margin: 10px;
     height: 28px;
     border-radius: 7px;
