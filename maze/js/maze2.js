@@ -1,6 +1,7 @@
 
 /// <reference path="jquery.min.js" />
 
+	var on_going=0;
 	var width=0;
 	var height=0;
 	var hard=0;
@@ -466,29 +467,33 @@ function key_event()
 }
 function make()
 {
-	if($('#height').val()==''||$('#width').val()=='')
+	if(on_going==0)
 	{
-		console.log('pp');
-		alert('please complete the height and width.');
-	}
-	else
-	{
-		var h=$('#height').val();
-		var w=$('#width').val();
-		console.log(h,w);
-		w=parseInt(w);
-		h=parseInt(h);      
-		if(w%2==0||h%2==0)
+		on_going=1;
+		if($('#height').val()==''||$('#width').val()=='')
 		{
-			alert("请输入奇数!");
+			console.log('pp');
+			alert('please complete the height and width.');
 		}
 		else
 		{
-			console.log(w+1,h+2);
-			make_maze(w,h);
-			key_event();
+			var h=$('#height').val();
+			var w=$('#width').val();
+			console.log(h,w);
+			w=parseInt(w);
+			h=parseInt(h);      
+			if(w%2==0||h%2==0)
+			{
+				alert("请输入奇数!");
+			}
+			else
+			{
+				console.log(w+1,h+2);
+				make_maze(w,h);
+				key_event();
+			}
+			
 		}
-		
 	}
 }
 function show_path()
@@ -526,6 +531,7 @@ function help()
 function re_start()
 {
 	flag=0;
+	ongoing=0;
 	$('#bg').empty();
 	$('#help').hide();
 	$('#re_start').hide();

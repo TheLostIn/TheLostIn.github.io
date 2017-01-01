@@ -63,44 +63,7 @@
 <script type="text/javascript">
 $('#record').hide();
 $('#re_start').hide();
-function start()
-{
 
-	console.log("start");
-    var flag=0;
-	var text='';
-	var width=$('#width').val();
-	var height=$('#height').val();
-	var hard=$('#hard').val();
-	if($.trim(width)==''||$.trim(height)==''||$.trim(hard)=='')
-	{
-		alert('请输入雷阵的宽和高和难度');
-	}
-	else
-	{
-		height=parseInt(height);
-		width=parseInt(width);
-		hard=parseInt(hard);
-		var a=Create_bomb(width,height,hard);
-		
-		console.log(a);
-
-		var count =0;
-		for(var i=1;i<=height;i++)
-		{
-			for(var j=1;j<=width;j++)
-			{
-				count++;
-				text+=`<input type="button" class="default" value=" "  name="${count}" id="${count}" onmousedown="check_bomb(this.id)">`;
-			}
-			text+=`</br>`;
-		}
-		$('#bg').append(text);
-		$('#record').show();
-		$('#re_start').show();
-		$('#ask_height_width').hide();
-	}
-}
 document.oncontextmenu=function(e){return false;}
 
 </script>

@@ -7,6 +7,7 @@ var a;
 var bomb_num=0;
 var bomb_cur=0;
 var correct_bomb=0;
+var on_going=0;
 var visit=new Array();
 console.log(a);
 
@@ -262,9 +263,52 @@ function check_bomb(id)
 function re_start()
 {
 	flag=0;
+	on_going=0;
 	$('#bg').empty();
 	$('#record').hide();
 	$('#re_start').hide();
 	$('#ask_height_width').show();
 	console.log('p');
+}
+function start()
+{
+
+	if(on_going==0)
+	{		
+		on_going=1;
+		console.log("start");
+	    var flag=0;
+		var text='';
+		var width=$('#width').val();
+		var height=$('#height').val();
+		var hard=$('#hard').val();
+		if($.trim(width)==''||$.trim(height)==''||$.trim(hard)=='')
+		{
+			alert('请输入雷阵的宽和高和难度');
+		}
+		else
+		{
+			height=parseInt(height);
+			width=parseInt(width);
+			hard=parseInt(hard);
+			var a=Create_bomb(width,height,hard);
+			
+			console.log(a);
+
+			var count =0;
+			for(var i=1;i<=height;i++)
+			{
+				for(var j=1;j<=width;j++)
+				{
+					count++;
+					text+=`<input type="button" class="default" value=" "  name="${count}" id="${count}" onmousedown="check_bomb(this.id)">`;
+				}
+				text+=`</br>`;
+			}
+			$('#bg').append(text);
+			$('#record').show();
+			$('#re_start').show();
+			$('#ask_height_width').hide();
+		}
+	}
 }
