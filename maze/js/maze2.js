@@ -257,21 +257,35 @@
 		return 1;
 
 	} 
-function back_place(num)
+function back_place(num,type="normal")
 {
 	//setTimeout($(`input[id=${num}]`).removeClass("walk"), 3000);
 	//setTimeout($(`input[id=${num}]`).addClass("default"), 3000);
-	$(`input[id=${num}]`).removeClass("walk");
+	if(type=="help")
+	{
+		$(`input[id=${num}]`).removeClass("help");
+	}
+	else
+	{
+		$(`input[id=${num}]`).removeClass("walk");
+	}
 	$(`input[id=${num}]`).addClass("default");
 }
-function show_place(num,index)
+function show_place(num,index,type="normal")
 {
 //	$(`input[id=${num}]`).val(index);
 	//console.log("index: "+index);
 	//setTimeout($(`input[id=${num}]`).removeClass("default"), 3000);
 	//setTimeout($(`input[id=${num}]`).addClass("walk"), 3000);
+	if(type=="help")
+	{
+		$(`input[id=${num}]`).addClass("help");
+	}
+	else
+	{
+		$(`input[id=${num}]`).addClass("walk");
+	}
 	$(`input[id=${num}]`).removeClass("default");
-	$(`input[id=${num}]`).addClass("walk");
 	//$(`input[id=${num}]`).addClass("walk");
 }
 function hello()
@@ -445,6 +459,7 @@ function key_event()
              	if(cur_x==end_point.x&&cur_y==end_point.y)
              	{
              		alert('Congradulations!!');
+             		re_start();
              	}
             }
          }; 
@@ -486,12 +501,12 @@ function show_path()
 		if(p.todo=="push")
 		{
 			
-			setTimeout(show_place, 500, p.point, p.index);
+			setTimeout(show_place, 500, p.point, p.index,"help");
 			console.log('b',p.index);
 		}	　 		
 		else
 		{
-			setTimeout(back_place, 500, p.point);
+			setTimeout(back_place, 500, p.point,"help");
 		}
 		console.log('c');
 		if(record.length==0)
