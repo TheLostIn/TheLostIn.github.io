@@ -23,11 +23,11 @@
     border-bottom-color: white;
 
 }
-input[type=text]
+input[type=text],input[type=number]
 {
 	/*width: 30px;
 	height: 20px;*/
-	    margin: 10px;
+	margin: 10px;
     height: 28px;
     border-radius: 7px;
     border-style: none;

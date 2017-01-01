@@ -67,6 +67,8 @@ function Create_bomb(width_w,height_w,hard_w)
 		a[height+1][j]=0;
 	}
 	console.log(a);
+	app.bomb_cur=0;
+	app.bomb_num=0;
 	return a;
 }
 function Count_bomb(a,x,y,x1,y1)
@@ -95,7 +97,7 @@ function random_start(a,x1,y1)
 		for(var j=Math.abs(y1-max_y);j<(Math.abs(y1-max_y)+x1);j++)
 		{
 			if(a[i][j]<0)
-				a[i][j]=Math.floor(Math.random()*(hard+1));
+				a[i][j]=Math.floor(Math.random()*(hard+1))-(6-hard);
 		}
 	}
 	return a;
@@ -105,6 +107,7 @@ function init_map(a,width,height)
 	var x=[-1,0,1,1,1,0,-1,-1];//start form left above
 	var y=[1,1,1,0,-1,-1,-1,0];
 	var tmp;
+	bomb_num=0;
 	for(var i=1;i<=height;i++)
 	{
 		for(var j=1;j<=width;j++)
@@ -120,6 +123,7 @@ function init_map(a,width,height)
 		}
 	}
 	app.bomb_num=bomb_num;
+	app.bomb_cur=0;
 }
 function get_matrix()
 {
@@ -216,7 +220,6 @@ function right_click(a,x,y)
 	}
 	else
 	{
-
 			$(`input[id=${c}]`).removeClass("default");
 			$(`input[id=${c}]`).addClass("bomb_flag");
 
@@ -252,6 +255,7 @@ function check_bomb(id)
 			right_click(a,i,j);
 	}else{
 		console.log('init');
+		bomb_cur=0;
 		a=random_start(a,i,j);
 		init_map(a,width,height);
 		left_click(a,i,j);
@@ -259,11 +263,14 @@ function check_bomb(id)
 	}
 	app.bomb_cur=bomb_cur;
 
+//	$('#record').show();
+
 }
 function re_start()
 {
 	flag=0;
 	on_going=0;
+	correct_bomb=0;
 	$('#bg').empty();
 	$('#record').hide();
 	$('#re_start').hide();
