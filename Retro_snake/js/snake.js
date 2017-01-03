@@ -17,6 +17,8 @@ var food_num;
 var food=[-1,-1,-1,-1];
 var all_food_num=4;
 var show;
+var key=new Array();
+
 console.log(a);
 
 function init_visit(visit,flag)
@@ -208,15 +210,22 @@ function key_event()
 				visit=init_visit(visit,0);
 				visit[start.x][start.y]=1;
 				//var key=[37,39];
-				var key=[38,39,40,37];
+				
+				
 				var weight=[-1,1];
             	console.log(e.keyCode);
              	for(var i=0;i<key.length;i++)
              	{
 	         		if(e.keyCode==key[i])
 	         		{  
-	         		//	snake_direction=(weight[i]+snake_direction+4)%4;
-	         			snake_direction=i;
+	         			if(hard==1)
+	         			{
+	         				snake_direction=(weight[i]+snake_direction+4)%4;
+	         			}
+	         			else
+		         		{
+		         			snake_direction=i;
+		         		}
 	         			console.log("snake_direction: ",snake_direction);
 	         			return false;
 	         			break;
@@ -278,6 +287,16 @@ function start_game()
 			console.log(visit);
 			var h=$('#height').val();
 			var w=$('#width').val();
+
+			hard=parseInt($('#hard').val());
+			if(hard==0)
+			{
+				key=[38,39,40,37];
+			}
+			else
+			{
+				key=[37,39];
+			}
 			console.log(h,w);
 			w=parseInt(w);
 			h=parseInt(h);
