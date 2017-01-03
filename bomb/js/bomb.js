@@ -282,7 +282,7 @@ function start()
 
 	if(on_going==0)
 	{		
-		on_going=1;
+	
 		console.log("start");
 	    var flag=0;
 		var text='';
@@ -299,7 +299,7 @@ function start()
 			width=parseInt(width);
 			hard=parseInt(hard);
 			var a=Create_bomb(width,height,hard);
-			
+			on_going=1;
 			console.log(a);
 
 			var count =0;

@@ -6,7 +6,7 @@
 	<title>maze</title>
 	<meta name="description" content="maze">
 	<meta name="keywords" content="maze">
-	<link href="css/maze.css" rel="stylesheet">
+	<link href="css/snake.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../stylesheets/normalize.css" media="screen">
     <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="../stylesheets/github-light.css" media="screen">
@@ -24,19 +24,28 @@
 
 	<div class="bs-example bs-example-form" style="padding: 20px;">
 		<div class="col-lg-12">
-      		<h3>迷宫</h3>
+      		<h3>贪吃蛇</h3>
       	</div>
       	<div class="col-lg-12">
       		<h3>
-      			啊哈 迷宫
+      			啊哈 贪吃蛇
       		</h3>
       	</div>    
      <div id="ask_height_width">
-		<div class="col-lg-8 col-md-8 col-xs-8"><input type="number" class="col-lg-8 col-md-8 col-xs-8" name="width" id="width" min=1 max=41 placeholder="width (奇数)"></div>
-		<div class="col-lg-8 col-md-8 col-xs-8"><input type="number" min=1 max=41 class="col-lg-8 col-md-8 col-xs-8" name="height" id="height" placeholder="height (奇数)"></div>
-		<!-- <div class="col-lg-8 col-md-8 col-xs-8"><input type="text" class="col-lg-8 col-md-8 col-xs-8" name="hard" id="hard" placeholder="hard 1 2 3 4 5 6 越小越难"></div> -->
+		<div class="col-lg-8 col-md-8 col-xs-8">
+			<input type="text" class="col-lg-8 col-md-8 col-xs-8" name="width" id="width" placeholder="width">
+		</div>
+		<div class="col-lg-8 col-md-8 col-xs-8">
+			<input type="text" class="col-lg-8 col-md-8 col-xs-8" name="height" id="height" placeholder="height">
+		</div>
+		<div class="col-lg-8 col-md-8 col-xs-8">
+			<select class="col-lg-8 col-md-8 col-xs-8" name="hard" id="hard"> 
+				<option value="0">上下左右箭头模式</option>
+				<option value="1">左右箭头模式</option>
+			</select>
+		</div>
      </div>
-		<div class="col-lg-8 col-md-8 col-xs-8"><input type="button" name="submit" value="let's begin" class="begin col-lg-8 col-md-8 col-xs-8" onclick="make()"></div>
+		<div class="col-lg-8 col-md-8 col-xs-8"><input type="button" name="submit" value="let's begin" class="begin col-lg-8 col-md-8 col-xs-8" onclick="start_game()"></div>
 		
 	</div> 
 	<div id="bg" style="padding: 30px" class="col-lg-12 col-xs-12 col-md-12">
@@ -45,19 +54,19 @@
 	 <div id="re_start" style="padding: 30px" class="col-lg-8 col-xs-8 col-md-8">
 	 <input type="button" name="submit" id="re_start" value="re_start" class="begin col-lg-8 col-md-8 col-xs-8" onclick="re_start()">
 	 </div>
-	 <div style="padding: 30px" class="col-lg-8 col-xs-8 col-md-8">
+	<!--  <div style="padding: 30px" class="col-lg-8 col-xs-8 col-md-8">
 	 	<input type="button" name="submit" id="help" value="help me" class="begin col-lg-8 col-md-8 col-xs-8" onclick="help()">
-	 </div>
+	 </div> -->
 </div>
 </body>
 <script type="text/javascript">
 $('#record').hide();
 $('#re_start').hide();
-$('#help').hide();
+//$('#help').hide();
 //start();
 </script>
 <script type="text/javascript">
 </script>
 
-	<script type="text/javascript" src="js/maze2.js"></script>
+	<script type="text/javascript" src="js/snake.js"></script>
 </html>

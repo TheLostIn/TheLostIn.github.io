@@ -454,24 +454,23 @@ function key_event()
 			                 	}		            
 		                 	}
 		                 }
-		                 return false;
-		                 break;
+		                if(cur_x==end_point.x&&cur_y==end_point.y)
+		             	{
+		             		alert('Congradulations!!');
+		             		re_start();
+		             	}
+		                return false;
+		                break;
 	                }
              	}
-             	if(cur_x==end_point.x&&cur_y==end_point.y)
-             	{
-             		alert('Congradulations!!');
-             		re_start();
-             	}
+             
             }
          }; 
 }
 function make()
 {
-	console.log('op');
 	if(on_going==0)
 	{
-		on_going=1;
 		if($('#height').val()==''||$('#width').val()=='')
 		{
 			console.log('pp');
@@ -490,6 +489,7 @@ function make()
 			}
 			else
 			{
+				on_going=1;
 				console.log(w+1,h+2);
 				make_maze(w,h);
 				key_event();
@@ -538,5 +538,4 @@ function re_start()
 	$('#help').hide();
 	$('#re_start').hide();
 	$('#ask_height_width').show();
-	console.log('p');
 }
