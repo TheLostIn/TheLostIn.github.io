@@ -430,7 +430,7 @@ function key_event()
              	for(var i=0;i<4;i++)
              	{
 	         		if(e.keyCode==key[i])
-	         		{
+	         		{  
 	                 //要做的事情
 		                 new_x=cur_x+x[i];
 		                 new_y=cur_y+y[i];
@@ -454,6 +454,7 @@ function key_event()
 			                 	}		            
 		                 	}
 		                 }
+		                 return false;
 		                 break;
 	                }
              	}
